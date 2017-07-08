@@ -4,8 +4,7 @@ import './App.css'
 const logo = require('../imgs/logo.svg');
 
 class App extends React.Component<{}, {}> {
-  render() {
-    
+  public render() {
     const formattedTime: string = new Date().toString();
 
     return (
