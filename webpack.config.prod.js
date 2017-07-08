@@ -18,8 +18,8 @@ module.exports = {
   },
   devtool: 'source-map',
   module: {
-    // compile ts
     loaders: [
+      // compile ts
       {
         exclude: /node_modules/,
         test: /\.tsx?$/,
