@@ -34,8 +34,8 @@ class Options extends React.Component<{}, { prefs: UserPrefs }> {
     });
   }
 
-  constructor(props) {
-    super(props);
+  constructor({}) {
+    super({});
     // init state with default values
     this.state = {
       prefs: {

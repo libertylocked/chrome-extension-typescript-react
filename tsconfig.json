@@ -3,7 +3,7 @@
     "module": "commonjs",
     "jsx": "react",
     "target": "es5",
-    "noImplicitAny": false,
+    "noImplicitAny": true,
     "sourceMap": true,
     "rootDir": "src",
     "outDir": "dist/build/tsc_output",
