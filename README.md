@@ -5,7 +5,8 @@ Chrome Extension Starter Kit, for TypeScript and React.
 ## What is new
 Forked from [chibat's original starter kit](https://github.com/chibat/chrome-extension-typescript-starter), this kit essentially adds *React* support for **popup** and **options** windows.
 
-Plus a bunch of other improvements like source mapping!
+Plus a bunch of other improvements like source mapping and a better build setup!
+
 ---
 
 ## Includes the following
