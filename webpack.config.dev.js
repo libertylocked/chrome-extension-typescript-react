@@ -17,19 +17,25 @@ module.exports = {
   devtool: 'source-map',
   module: {
     loaders: [
+      // compile ts
       {
         exclude: /node_modules/,
         test: /\.tsx?$/,
-        loader: 'ts-loader'
+        loader: 'ts-loader',
+        query: {
+          compilerOptions: {
+            noEmit: false
+          }
+        }
       },
 
-      // CSS loader
+      // css loader
       {
         test: /\.css$/,
         loader: 'style-loader!css-loader'
       },
 
-      // Image file loader
+      // image file loader
       {
         test: /\.(jpg|png|svg)$/,
         loader: 'file-loader',

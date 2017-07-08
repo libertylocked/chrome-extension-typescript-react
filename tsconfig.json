@@ -6,7 +6,8 @@
     "noImplicitAny": false,
     "sourceMap": true,
     "rootDir": "src",
-    "outDir": "dist/js",
-    "noEmitOnError": true
+    "outDir": "dist/build/tsc_output",
+    "noEmit": true,
+    "noEmitOnError": false
   }
 }
