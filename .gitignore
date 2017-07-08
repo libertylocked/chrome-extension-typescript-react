@@ -1,4 +1,19 @@
-npm-debug.log
-node_modules/
-dist/js
+# dependencies
+/node_modules
+
+# testing
+/coverage
+
+# production
+/dist/build
+
+# misc
+.DS_Store
+.env
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 tmp/
+
+# vscode
+.vscode

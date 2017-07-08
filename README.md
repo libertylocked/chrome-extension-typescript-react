@@ -1,59 +1,47 @@
-# Chrome Extension TypeScript Starter
+# Chrome Extension TypeScript React Starter Kit
 
-Chrome Extension, TypeScript and Visual Studio Code
+Chrome Extension Starter Kit, for TypeScript and React.
 
-## Prerequisites
+## What is new
+Forked from [chibat's original starter kit](https://github.com/chibat/chrome-extension-typescript-starter), this kit essentially adds *React* support for **popup** and **options** windows.
 
-* [node + npm](https://nodejs.org/) (Current Version)
+Plus a bunch of other improvements like source mapping!
 
-## Option
-
-* [Visual Studio Code](https://code.visualstudio.com/)
+---
 
 ## Includes the following
 
-* TypeScript
-* Webpack
-* Moment.js
-* jQuery
-* Example Code
-    * Chrome Storage
-    * Options Version 2
-    * content script
-    * count up badge number
-    * background
+- TypeScript
+- React
+- Webpack
+- Moment.js
+- jQuery
 
 ## Project Structure
 
-* src: TypeScript source files
-* dist: Chrome Extension directory
-* dist/js: Generated JavaScript files
+- `src`: TypeScript source files
+- `dist`: Chrome Extension directory
+- `dist/build`: Generated JavaScript bundles with source mapping, and assets
 
-## Setup
-
-```
-npm install
-```
-
-## Import as Visual Studio Code project
-
-...
-
-## Build by watch mode
-
-### terminal
-
+## Production build
+Runs webpack and generates the minified bundles
 ```
 npm run build
 ```
 
-### Visual Studio Code
-
-Run watch mode.
-
-type `Ctrl + Shift + B`
+## Development build
+Runs webpack in watch mode, generates bundles with source mapping
+```
+npm run watch
+```
 
 ## Load extension to chrome
+- Open Chrome and go to `chrome://extensions`
+- Click `Load unpacked extension...`
+- Load the `dist` directory
 
-Load `dist` directory
-
+## Debugging your extension
+- Click on the icon of your extension opens the **popup** window
+- Right click and open DevTools
+- In DevTools you can press Ctrl+R to reload
+- Because source maps are generated, you can easily debug your ts code in DevTools

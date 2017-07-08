@@ -1,27 +1,49 @@
 {
-  "name": "chrome-extension-typescript-starter",
+  "name": "chrome-extension-typescript-react",
   "version": "1.0.0",
-  "description": "chrome-extension-typescript-starter",
-  "main": "index.js",
-  "scripts": {
-    "build": "./node_modules/.bin/webpack",
-    "watch": "./node_modules/.bin/webpack -w"
+  "description": "Chrome Extension starter kit, for React and TypeScript",
+  "keywords": [
+    "typescript",
+    "react",
+    "chrome-extension"
+  ],
+  "bugs": {
+    "url": "https://github.com/LibertyLocked/chrome-extension-typescript-react/issues"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "libertylocked",
+  "contributors": [
+    "chibat",
+    "libertylocked"
+  ],
+  "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/chibat/chrome-extension-typescript-starter.git"
+    "url": "https://github.com/libertylocked/chrome-extension-typescript-react.git"
+  },
+  "scripts": {
+    "build": "./node_modules/.bin/webpack --config webpack.config.prod.js",
+    "watch": "./node_modules/.bin/webpack --config webpack.config.dev.js -w",
+    "clean": "rm ./dist/build -r"
   },
   "dependencies": {
-    "jquery": "~3.2.1",
-    "moment": "~2.18.1"
+    "jquery": "^3.2.1",
+    "moment": "^2.18.1",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1"
   },
   "devDependencies": {
-    "@types/chrome": "~0.0.46",
-    "@types/jquery": "~2.0.41",
-    "ts-loader": "~2.0.3",
-    "typescript": "~2.2.2",
-    "webpack": "~2.4.1"
+    "@types/chrome": "0.0.47",
+    "@types/jquery": "3.2.6",
+    "@types/node": "^8.0.9",
+    "@types/react": "^15.0.35",
+    "@types/react-dom": "^15.5.1",
+    "clean-webpack-plugin": "^0.1.16",
+    "css-loader": "^0.28.4",
+    "file-loader": "^0.11.2",
+    "source-map-loader": "^0.2.1",
+    "style-loader": "^0.18.2",
+    "ts-loader": "^2.2.2",
+    "typescript": "^2.3.4",
+    "webpack": "^3.1.0"
   }
 }
