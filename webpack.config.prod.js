@@ -1,6 +1,7 @@
 const webpack = require('webpack')
 const path = require('path')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = {
   entry: {
@@ -60,7 +61,7 @@ module.exports = {
 
     // clean output dir
     new CleanWebpackPlugin([
-      'dist/build'
+      'dist'
     ]),
 
     // pack common vender files
@@ -73,6 +74,19 @@ module.exports = {
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
 
     // minify
-    new webpack.optimize.UglifyJsPlugin()
+    new webpack.optimize.UglifyJsPlugin(),
+
+    // copy files in public to dist
+    new CopyWebpackPlugin([
+      {
+        context: 'public',
+        from: {
+          glob: '**/*',
+          dot: false,
+        },
+        to: path.join(__dirname, 'dist/')
+      }
+    ])
+
   ]
 };

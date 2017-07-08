@@ -21,9 +21,10 @@
     "url": "https://github.com/libertylocked/chrome-extension-typescript-react.git"
   },
   "scripts": {
+    "start": "npm run-script watch",
     "build": "./node_modules/.bin/webpack --config webpack.config.prod.js",
     "watch": "./node_modules/.bin/webpack --config webpack.config.dev.js -w",
-    "clean": "rm ./dist/build -r"
+    "clean": "./node_modules/.bin/rimraf ./dist"
   },
   "dependencies": {
     "jquery": "^3.2.1",
@@ -38,8 +39,10 @@
     "@types/react": "^15.0.35",
     "@types/react-dom": "^15.5.1",
     "clean-webpack-plugin": "^0.1.16",
+    "copy-webpack-plugin": "^4.0.1",
     "css-loader": "^0.28.4",
     "file-loader": "^0.11.2",
+    "rimraf": "^2.6.1",
     "source-map-loader": "^0.2.1",
     "style-loader": "^0.18.2",
     "ts-loader": "^2.2.2",

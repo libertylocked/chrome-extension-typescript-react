@@ -6,11 +6,9 @@ Chrome Extension Starter Kit, for TypeScript and React.
 Forked from [chibat's original starter kit](https://github.com/chibat/chrome-extension-typescript-starter), this kit essentially adds *React* support for **popup** and **options** windows.
 
 Plus a bunch of other improvements like source mapping!
-
 ---
 
 ## Includes the following
-
 - TypeScript
 - React
 - Webpack
@@ -18,10 +16,16 @@ Plus a bunch of other improvements like source mapping!
 - jQuery
 
 ## Project Structure
-
 - `src`: TypeScript source files
-- `dist`: Chrome Extension directory
-- `dist/build`: Generated JavaScript bundles with source mapping, and assets
+- `public`: Chrome Extension manifest, icon, HTMLs
+- `dist`: This is where the Chrome Extension will be built
+  - `dist/build`: Generated JavaScript bundles with source mapping, and assets
+
+## Development build
+Runs webpack in watch mode, generates bundles with source mapping
+```
+npm start
+```
 
 ## Production build
 Runs webpack and generates the minified bundles
@@ -29,13 +33,8 @@ Runs webpack and generates the minified bundles
 npm run build
 ```
 
-## Development build
-Runs webpack in watch mode, generates bundles with source mapping
-```
-npm run watch
-```
-
 ## Load extension to chrome
+- Build the extension
 - Open Chrome and go to `chrome://extensions`
 - Click `Load unpacked extension...`
 - Load the `dist` directory

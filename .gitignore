@@ -5,7 +5,7 @@
 /coverage
 
 # production
-/dist/build
+/dist
 
 # misc
 .DS_Store

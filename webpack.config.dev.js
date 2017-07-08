@@ -1,5 +1,6 @@
 const webpack = require('webpack')
 const path = require('path')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = {
   entry: {
@@ -72,5 +73,18 @@ module.exports = {
 
     // exclude locale files in moment
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+
+    // copy files in public to dist
+    new CopyWebpackPlugin([
+      {
+        context: 'public',
+        from: {
+          glob: '**/*',
+          dot: false,
+        },
+        to: path.join(__dirname, 'dist/')
+      }
+    ])
+
   ]
 };
