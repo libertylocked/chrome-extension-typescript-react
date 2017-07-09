@@ -6,12 +6,10 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 const buildConfig: webpack.Configuration = {
   entry: {
-    background: path.join(__dirname, "src/background/index.ts"),
+    background_script: path.join(__dirname, "src/background_script/index.ts"),
     content_script: path.join(__dirname, "src/content_script/index.ts"),
     options: path.join(__dirname, "src/options/index.tsx"),
     popup: path.join(__dirname, "src/popup/index.tsx"),
-    vendor_common: ["jquery", "moment"],
-    vendor_react: ["react", "react-dom"],
   },
   module: {
     rules: [
@@ -48,15 +46,16 @@ const buildConfig: webpack.Configuration = {
     path: path.join(__dirname, "dist/build"),
   },
   plugins: [
-    // pack vendor files and common chunks
+    // pack common chunks
     new webpack.optimize.CommonsChunkPlugin({
-      minChunks: Infinity,
-      names: ["vendor_react", "vendor_common"],
+      chunks: ["background_script", "content_script"],
+      minChunks: 2,
+      name: "common_for_scripts",
     }),
     new webpack.optimize.CommonsChunkPlugin({
-      chunks: ["popup", "options", "content_script", "background"],
+      chunks: ["popup", "options"],
       minChunks: 2,
-      name: "common",
+      name: "common_for_ui",
     }),
     // exclude locale files in moment
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
@@ -105,7 +104,7 @@ if (process.env.NODE_ENV === "production") {
   buildConfig.plugins = (buildConfig.plugins || []).concat([
     // exclude source mapping for vendor libs
     new webpack.SourceMapDevToolPlugin({
-      exclude: ["vendor_react.js", "vendor_common.js"],
+      exclude: /^vendor.*.\.js$/,
       filename: "[file].map",
     }),
   ]);

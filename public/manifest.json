@@ -17,17 +17,15 @@
         "<all_urls>"
       ],
       "js": [
-        "build/vendor_common.js",
-        "build/common.js",
+        "build/common_for_scripts.js",
         "build/content_script.js"
       ]
     }
   ],
   "background": {
     "scripts": [
-      "build/vendor_common.js",
-      "build/common.js",
-      "build/background.js"
+      "build/common_for_scripts.js",
+      "build/background_script.js"
     ]
   },
   "permissions": [
