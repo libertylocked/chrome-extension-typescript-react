@@ -18,6 +18,7 @@
       ],
       "js": [
         "build/vendor_common.js",
+        "build/common.js",
         "build/content_script.js"
       ]
     }
@@ -25,6 +26,7 @@
   "background": {
     "scripts": [
       "build/vendor_common.js",
+      "build/common.js",
       "build/background.js"
     ]
   },

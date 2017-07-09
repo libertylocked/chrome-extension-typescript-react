@@ -9,20 +9,20 @@ module.exports = {
     options: path.join(__dirname, 'src/options.tsx'),
     content_script: path.join(__dirname, 'src/content_script.ts'),
     background: path.join(__dirname, 'src/background.ts'),
-    vendor_common: ['moment', 'jquery'],
     vendor_react: ['react', 'react-dom'],
+    vendor_common: ['jquery', 'moment'],
   },
   output: {
     path: path.join(__dirname, 'dist/build'),
     filename: '[name].js'
   },
-  devtool: 'source-map',
+  devtool: false,
   module: {
     loaders: [
       // compile ts
       {
-        exclude: /node_modules/,
         test: /\.tsx?$/,
+        exclude: /node_modules/,
         loader: 'ts-loader',
         query: {
           compilerOptions: {
@@ -39,14 +39,15 @@ module.exports = {
 
       // image file loader
       {
-        test: /\.(jpg|png|svg)$/,
+        test: /\.(jpg|png|svg|gif)$/,
         loader: 'file-loader',
         query: {
           name: '[name].[ext]',
           publicPath: 'build/',
           outputPath: 'assets/'
         }
-      },
+      }
+
     ]
   },
   resolve: {
@@ -64,10 +65,15 @@ module.exports = {
       'dist'
     ]),
 
-    // pack common vender files
+    // pack vendor files and common chunks
     new webpack.optimize.CommonsChunkPlugin({
       names: ['vendor_react', 'vendor_common'],
       minChunks: Infinity
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'common',
+      chunks: ['popup', 'options', 'content_script', 'background'],
+      minChunks: 2
     }),
 
     // exclude locale files in moment
