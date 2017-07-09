@@ -8,8 +8,8 @@ interface IUserPrefs {
 
 class Options extends React.Component<{}, { prefs: IUserPrefs }> {
 
-  constructor({ }) {
-    super({});
+  constructor(props: {}) {
+    super(props);
     // init state with default values
     this.state = {
       prefs: {
