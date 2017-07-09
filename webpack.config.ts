@@ -17,11 +17,6 @@ const buildConfig: webpack.Configuration = {
       {
         exclude: /node_modules/,
         loader: "ts-loader",
-        query: {
-          compilerOptions: {
-            noEmit: false,
-          },
-        },
         test: /\.tsx?$/,
       },
       // css loader
@@ -71,7 +66,7 @@ const buildConfig: webpack.Configuration = {
     ]),
   ],
   resolve: {
-    extensions: [".ts", ".tsx", ".js"],
+    extensions: [".ts", ".tsx", ".js", ".jsx"],
   },
 };
 
