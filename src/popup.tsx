@@ -1,9 +1,9 @@
-import * as React from 'react'
-import * as ReactDOM from 'react-dom'
-import App from './components/App'
-import './popup.css'
+import * as React from "react";
+import * as ReactDOM from "react-dom";
+import App from "./components/App";
+import "./popup.css";
 
 ReactDOM.render(
   <App />,
-  document.getElementById('root') as HTMLElement
+  document.getElementById("root") as HTMLElement,
 );

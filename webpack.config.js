@@ -98,6 +98,16 @@ if (process.env.NODE_ENV === 'production') {
     new webpack.optimize.UglifyJsPlugin(),
   ]);
 } else {
+  buildConfig.module.loaders = (buildConfig.module.loaders || []).concat([
+    // tslint
+    {
+      test: /\.tsx?$/,
+      exclude: /node_modules/,
+      loader: 'tslint-loader',
+      enforce: 'pre'
+    }
+  ]);
+
   buildConfig.plugins = (buildConfig.plugins || []).concat([
     // exclude source mapping for vendor libs
     new webpack.SourceMapDevToolPlugin({

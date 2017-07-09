@@ -1,0 +1,16 @@
+{
+  "extends": [
+    "tslint:latest",
+    "tslint-react"
+  ],
+  "rules": {
+    "indent": [
+      true,
+      "spaces",
+      2
+    ],
+    "no-console": [
+      false
+    ]
+  }
+}
