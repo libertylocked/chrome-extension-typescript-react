@@ -1,12 +1,12 @@
 import * as React from "react";
-import "./Options.css";
+import "./App.css";
 
 interface IUserPrefs {
   colorful: boolean;
   favoriteColor: string;
 }
 
-class Options extends React.Component<{}, { prefs: IUserPrefs }> {
+class App extends React.Component<{}, { prefs: IUserPrefs }> {
 
   constructor(props: {}) {
     super(props);
@@ -75,4 +75,4 @@ class Options extends React.Component<{}, { prefs: IUserPrefs }> {
 
 }
 
-export default Options;
+export default App;

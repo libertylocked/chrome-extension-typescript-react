@@ -6,10 +6,10 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 const buildConfig: webpack.Configuration = {
   entry: {
-    background: path.join(__dirname, "src/background.ts"),
-    content_script: path.join(__dirname, "src/content_script.ts"),
-    options: path.join(__dirname, "src/options.tsx"),
-    popup: path.join(__dirname, "src/popup.tsx"),
+    background: path.join(__dirname, "src/background/index.ts"),
+    content_script: path.join(__dirname, "src/content_script/index.ts"),
+    options: path.join(__dirname, "src/options/index.tsx"),
+    popup: path.join(__dirname, "src/popup/index.tsx"),
     vendor_common: ["jquery", "moment"],
     vendor_react: ["react", "react-dom"],
   },
@@ -35,7 +35,7 @@ const buildConfig: webpack.Configuration = {
       {
         loader: "file-loader",
         query: {
-          name: "[name].[ext]",
+          name: "[hash].[ext]",
           outputPath: "assets/",
           publicPath: "build/",
         },

@@ -1,9 +1,9 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import Options from "./components/Options";
-import "./options.css";
+import App from "./App";
+import "./index.css";
 
 ReactDOM.render(
-  <Options />,
+  <App />,
   document.getElementById("root") as HTMLElement,
 );
