@@ -13,6 +13,7 @@ Plus a bunch of other improvements like source mapping and a better build setup!
 - TypeScript
 - React
 - Webpack
+- TSLint
 - Moment.js
 - jQuery
 
