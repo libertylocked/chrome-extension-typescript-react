@@ -3,7 +3,7 @@ const path = require('path')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 
-module.exports = {
+const buildConfig = {
   entry: {
     popup: path.join(__dirname, 'src/popup.tsx'),
     options: path.join(__dirname, 'src/options.tsx'),
@@ -16,7 +16,6 @@ module.exports = {
     path: path.join(__dirname, 'dist/build'),
     filename: '[name].js'
   },
-  devtool: false,
   module: {
     loaders: [
       // compile ts
@@ -54,17 +53,6 @@ module.exports = {
     extensions: ['.ts', '.tsx', '.js']
   },
   plugins: [
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify('production')
-      }
-    }),
-
-    // clean output dir
-    new CleanWebpackPlugin([
-      'dist'
-    ]),
-
     // pack vendor files and common chunks
     new webpack.optimize.CommonsChunkPlugin({
       names: ['vendor_react', 'vendor_common'],
@@ -78,9 +66,6 @@ module.exports = {
 
     // exclude locale files in moment
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
-
-    // minify
-    new webpack.optimize.UglifyJsPlugin(),
 
     // copy files in public to dist
     new CopyWebpackPlugin([
@@ -96,3 +81,30 @@ module.exports = {
 
   ]
 };
+
+if (process.env.NODE_ENV === 'production') {
+  buildConfig.devtool = false;
+  buildConfig.plugins = (buildConfig.plugins || []).concat([
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify('production')
+      }
+    }),
+    // clean output files
+    new CleanWebpackPlugin([
+      'dist'
+    ]),
+    // minify
+    new webpack.optimize.UglifyJsPlugin(),
+  ]);
+} else {
+  buildConfig.plugins = (buildConfig.plugins || []).concat([
+    // exclude source mapping for vendor libs
+    new webpack.SourceMapDevToolPlugin({
+      filename: '[file].map',
+      exclude: ['vendor_react.js', 'vendor_common.js']
+    }),
+  ]);
+}
+
+module.exports = buildConfig
