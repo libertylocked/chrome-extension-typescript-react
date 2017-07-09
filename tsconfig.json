@@ -5,9 +5,7 @@
     "target": "es5",
     "noImplicitAny": true,
     "sourceMap": true,
-    "rootDir": "src",
-    "outDir": "dist/build/tsc_output",
-    "noEmit": true,
+    "noEmit": false,
     "noEmitOnError": false
   }
 }

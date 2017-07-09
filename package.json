@@ -22,9 +22,9 @@
   },
   "scripts": {
     "start": "npm run-script watch",
-    "build": "cross-env NODE_ENV=production ./node_modules/.bin/webpack --config webpack.config.js",
-    "build-dev": "cross-env NODE_ENV=development ./node_modules/.bin/webpack --config webpack.config.js",
-    "watch": "cross-env NODE_ENV=development ./node_modules/.bin/webpack --config webpack.config.js -w",
+    "build": "cross-env NODE_ENV=production ./node_modules/.bin/webpack --config webpack.config.ts",
+    "build-dev": "cross-env NODE_ENV=development ./node_modules/.bin/webpack --config webpack.config.ts",
+    "watch": "cross-env NODE_ENV=development ./node_modules/.bin/webpack --config webpack.config.ts -w",
     "clean": "./node_modules/.bin/rimraf ./dist"
   },
   "dependencies": {
@@ -35,10 +35,11 @@
   },
   "devDependencies": {
     "@types/chrome": "0.0.47",
-    "@types/jquery": "3.2.6",
+    "@types/jquery": "^3.2.6",
     "@types/node": "^8.0.9",
     "@types/react": "^15.0.35",
     "@types/react-dom": "^15.5.1",
+    "@types/webpack": "^3.0.2",
     "clean-webpack-plugin": "^0.1.16",
     "copy-webpack-plugin": "^4.0.1",
     "cross-env": "^5.0.1",
@@ -48,6 +49,7 @@
     "source-map-loader": "^0.2.1",
     "style-loader": "^0.18.2",
     "ts-loader": "^2.2.2",
+    "ts-node": "^3.2.0",
     "tslint": "^5.5.0",
     "tslint-loader": "^3.5.3",
     "tslint-react": "^3.0.0",
