@@ -45,6 +45,7 @@
     "cross-env": "^5.0.1",
     "css-loader": "^0.28.4",
     "file-loader": "^0.11.2",
+    "postcss-loader": "^2.0.6",
     "rimraf": "^2.6.1",
     "source-map-loader": "^0.2.1",
     "style-loader": "^0.18.2",

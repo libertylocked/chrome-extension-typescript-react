@@ -3,6 +3,11 @@ import * as webpack from "webpack";
 
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+const autoprefixer = require("autoprefixer");
+
+const isProd = (): boolean => {
+  return process.env.NODE_ENV === "production";
+};
 
 const buildConfig: webpack.Configuration = {
   entry: {
@@ -21,8 +26,25 @@ const buildConfig: webpack.Configuration = {
       },
       // css loader
       {
-        loader: "style-loader!css-loader",
         test: /\.css$/,
+        use: [
+          { loader: "style-loader", options: { sourceMap: !isProd() } },
+          { loader: "css-loader", options: { sourceMap: !isProd() } },
+          {
+            loader: "postcss-loader",
+            options: {
+              plugins: [autoprefixer(({
+                browsers: [
+                  ">1%",
+                  "last 4 versions",
+                  "Firefox ESR",
+                  "not ie < 9",
+                ],
+              }))],
+              sourceMap: !isProd(),
+            },
+          },
+        ],
       },
       // image file loader
       {
@@ -62,30 +84,27 @@ const buildConfig: webpack.Configuration = {
         glob: "**/*",
       },
       to: path.join(__dirname, "dist/"),
-    },
-    ]),
+    }]),
   ],
   resolve: {
     extensions: [".ts", ".tsx", ".js", ".jsx"],
   },
 };
 
-if (process.env.NODE_ENV === "production") {
+if (isProd()) {
+  // Production build tweaks
   buildConfig.devtool = false;
   buildConfig.plugins = (buildConfig.plugins || []).concat([
     new webpack.DefinePlugin({
-      "process.env": {
-        NODE_ENV: JSON.stringify("production"),
-      },
+      "process.env": { NODE_ENV: JSON.stringify("production") },
     }),
     // clean output files
-    new CleanWebpackPlugin([
-      "dist",
-    ]),
+    new CleanWebpackPlugin(["dist"]),
     // minify
     new webpack.optimize.UglifyJsPlugin(),
   ]);
 } else {
+  // Development build tweaks
   const buildConfigModule = buildConfig.module as webpack.NewModule;
   buildConfigModule.rules = (buildConfigModule.rules || []).concat([
     // tslint
