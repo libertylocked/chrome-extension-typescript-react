@@ -22,9 +22,10 @@
   },
   "scripts": {
     "start": "npm run-script watch",
-    "build": "cross-env NODE_ENV=production ./node_modules/.bin/webpack --config webpack.config.ts",
-    "build-dev": "cross-env NODE_ENV=development ./node_modules/.bin/webpack --config webpack.config.ts",
-    "watch": "cross-env NODE_ENV=development ./node_modules/.bin/webpack --config webpack.config.ts -w",
+    "build": "npm run-script build-prod",
+    "watch": "cross-env NODE_ENV=development ./node_modules/.bin/webpack -w",
+    "build-dev": "cross-env NODE_ENV=development ./node_modules/.bin/webpack",
+    "build-prod": "cross-env NODE_ENV=production ./node_modules/.bin/webpack",
     "clean": "./node_modules/.bin/rimraf ./dist"
   },
   "dependencies": {
