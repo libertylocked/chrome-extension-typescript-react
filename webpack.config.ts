@@ -1,12 +1,37 @@
 import * as path from "path";
 import * as webpack from "webpack";
 
+// webpack plugins
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+// postcss plugins
 const autoprefixer = require("autoprefixer");
+const cssnano = require("cssnano");
 
 const isProd = (): boolean => {
   return process.env.NODE_ENV === "production";
+};
+
+const postcssPlugins = (): any[] => {
+  let plugins = [
+    autoprefixer({
+      browsers: [
+        ">1%",
+        "last 4 versions",
+        "Firefox ESR",
+        "not ie < 9",
+      ],
+    }),
+  ];
+  if (isProd()) {
+    // minify css on prod build
+    plugins = plugins.concat([
+      cssnano({
+        preset: "default",
+      }),
+    ]);
+  }
+  return plugins;
 };
 
 const buildConfig: webpack.Configuration = {
@@ -25,6 +50,8 @@ const buildConfig: webpack.Configuration = {
         test: /\.tsx?$/,
       },
       // css loader
+      // source maps are generated only for dev builds
+      // css compression is only used for prod builds
       {
         test: /\.css$/,
         use: [
@@ -33,14 +60,7 @@ const buildConfig: webpack.Configuration = {
           {
             loader: "postcss-loader",
             options: {
-              plugins: [autoprefixer(({
-                browsers: [
-                  ">1%",
-                  "last 4 versions",
-                  "Firefox ESR",
-                  "not ie < 9",
-                ],
-              }))],
+              plugins: postcssPlugins,
               sourceMap: !isProd(),
             },
           },
