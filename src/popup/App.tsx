@@ -21,7 +21,7 @@ class App extends React.Component<{}, {}> {
           <h2>Welcome to React</h2>
         </div>
         <p className="App-intro">
-          To get started, edit <code>src/popup/App.js</code>
+          To get started, edit <code>src/popup/App.tsx</code>
         </p>
         <p className="App-intro">
           Right click and select <strong>Inspect</strong> to open DevTools.
