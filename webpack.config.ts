@@ -12,28 +12,6 @@ const isProd = (): boolean => {
   return process.env.NODE_ENV === "production";
 };
 
-const postcssPlugins = (): any[] => {
-  let plugins = [
-    autoprefixer({
-      browsers: [
-        ">1%",
-        "last 4 versions",
-        "Firefox ESR",
-        "not ie < 9",
-      ],
-    }),
-  ];
-  if (isProd()) {
-    // minify css on prod build
-    plugins = plugins.concat([
-      cssnano({
-        preset: "default",
-      }),
-    ]);
-  }
-  return plugins;
-};
-
 const buildConfig: webpack.Configuration = {
   entry: {
     background_script: path.join(__dirname, "src/background_script/index.ts"),
@@ -56,11 +34,23 @@ const buildConfig: webpack.Configuration = {
         test: /\.css$/,
         use: [
           { loader: "style-loader", options: { sourceMap: !isProd() } },
-          { loader: "css-loader", options: { sourceMap: !isProd() } },
+          {
+            loader: "css-loader", options: {
+              minimize: isProd(),
+              sourceMap: !isProd(),
+            },
+          },
           {
             loader: "postcss-loader",
             options: {
-              plugins: postcssPlugins,
+              plugins: () => [autoprefixer({
+                browsers: [
+                  ">1%",
+                  "last 4 versions",
+                  "Firefox ESR",
+                  "not ie < 9",
+                ],
+              })],
               sourceMap: !isProd(),
             },
           },
