@@ -1,6 +1,6 @@
 import * as React from "react";
-import "./App.css";
 
+const appStyles = require("./App.css");
 const logo = require("./logo.svg");
 
 class App extends React.Component<{}, {}> {
@@ -15,18 +15,19 @@ class App extends React.Component<{}, {}> {
     });
 
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
+      <div className={appStyles.app}>
+        <div className={appStyles.appHeader}>
+          <img src={logo} className={appStyles.appLogo} alt="logo" />
           <h2>Welcome to React</h2>
         </div>
-        <p className="App-intro">
+        <p className={appStyles.appIntro}>
           To get started, edit <code>src/popup/App.tsx</code>
         </p>
-        <p className="App-intro">
+        <p>
           Right click and select <strong>Inspect</strong> to open DevTools.
           In DevTools, press <code>Ctrl+R</code> to reload
         </p>
+        <hr />
         <p>Rendered at {formattedTime}</p>
       </div>
     );

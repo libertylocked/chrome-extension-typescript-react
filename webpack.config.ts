@@ -37,6 +37,7 @@ const buildConfig: webpack.Configuration = {
           {
             loader: "css-loader", options: {
               minimize: isProd(),
+              modules: true,
               sourceMap: !isProd(),
             },
           },

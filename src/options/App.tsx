@@ -1,5 +1,6 @@
 import * as React from "react";
-import "./App.css";
+
+const appStyles = require("./App.css");
 
 interface IUserPrefs {
   colorful: boolean;
@@ -29,20 +30,23 @@ class App extends React.Component<{}, { prefs: IUserPrefs }> {
 
   public render() {
     return (
-      <div>
-        <label>Favorite color</label>
-        <select onChange={this.handleSelectChange} value={this.state.prefs.favoriteColor}>
-          <option value="red">Red</option>
-          <option value="green">Green</option>
-          <option value="blue">Blue</option>
-          <option value="yellow">Yellow</option>
-        </select>
-
-        <label>Colorful background</label>
-        <input type="checkbox" checked={this.state.prefs.colorful} onChange={this.handleCheckboxChange} />
-
-        <button onClick={this.handleSaveClick}>Save</button>
-
+      <div className={appStyles.app}>
+        <div>
+          <label>Favorite color</label>
+          <select onChange={this.handleSelectChange} value={this.state.prefs.favoriteColor}>
+            <option value="red">Red</option>
+            <option value="green">Green</option>
+            <option value="blue">Blue</option>
+            <option value="yellow">Yellow</option>
+          </select>
+        </div>
+        <div>
+          <label>Colorful background</label>
+          <input type="checkbox" checked={this.state.prefs.colorful} onChange={this.handleCheckboxChange} />
+        </div>
+        <div>
+          <button onClick={this.handleSaveClick}>Save</button>
+        </div>
       </div>
     );
   }

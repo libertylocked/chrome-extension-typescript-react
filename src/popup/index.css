@@ -1,4 +1,4 @@
-html, body, #root {
+html, body, :global(#root) {
   width: 320px;
   height: 300px;
 }
