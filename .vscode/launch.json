@@ -12,6 +12,9 @@
       "webRoot": "${workspaceRoot}/src",
       "userDataDir": "${workspaceRoot}/.chrome",
       "sourceMaps": true,
+      "runtimeArgs": [
+        "--load-extension=${workspaceRoot}/dist"
+      ],
       "pathMapping": {
         "/": "${workspaceRoot}/dist"
       },
