@@ -36,6 +36,8 @@ const buildConfig: webpack.Configuration = {
           { loader: "style-loader", options: { sourceMap: !isProd() } },
           {
             loader: "css-loader", options: {
+              localIdentName:
+                isProd() ? "[hash:base64]" : "[path][name]__[local]__[hash:base64:6]",
               minimize: isProd(),
               modules: true,
               sourceMap: !isProd(),
