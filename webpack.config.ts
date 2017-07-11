@@ -137,4 +137,4 @@ if (isProd()) {
   ]);
 }
 
-module.exports = buildConfig;
+export default buildConfig;
