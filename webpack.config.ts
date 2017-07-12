@@ -6,7 +6,6 @@ const CleanWebpackPlugin = require("clean-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 // postcss plugins
 const autoprefixer = require("autoprefixer");
-const cssnano = require("cssnano");
 
 const isProd = (): boolean => {
   return process.env.NODE_ENV === "production";
@@ -36,8 +35,7 @@ const buildConfig: webpack.Configuration = {
           { loader: "style-loader", options: { sourceMap: !isProd() } },
           {
             loader: "css-loader", options: {
-              localIdentName:
-                isProd() ? "[hash:base64]" : "[path][name]__[local]__[hash:base64:6]",
+              localIdentName: isProd() ? "[hash:base64]" : "[path][name]__[local]__[hash:base64:6]",
               minimize: isProd(),
               modules: true,
               sourceMap: !isProd(),
