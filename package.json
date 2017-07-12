@@ -26,7 +26,8 @@
     "watch": "cross-env NODE_ENV=development ./node_modules/.bin/webpack -w",
     "build-dev": "cross-env NODE_ENV=development ./node_modules/.bin/webpack",
     "build-prod": "cross-env NODE_ENV=production ./node_modules/.bin/webpack",
-    "clean": "./node_modules/.bin/rimraf ./dist"
+    "clean": "./node_modules/.bin/rimraf ./dist",
+    "lint": "./node_modules/.bin/tslint -p tsconfig.json"
   },
   "dependencies": {
     "jquery": "^3.2.1",
