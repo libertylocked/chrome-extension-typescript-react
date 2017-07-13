@@ -18,6 +18,7 @@ const buildConfig: webpack.Configuration = {
     options: path.join(__dirname, "src/options/index.tsx"),
     popup: path.join(__dirname, "src/popup/index.tsx"),
   },
+  // tslint:disable-next-line:no-object-literal-type-assertion
   module: {
     rules: [
       // compile ts
@@ -57,18 +58,23 @@ const buildConfig: webpack.Configuration = {
           },
         ],
       },
-      // image file loader
+      // file loader for media assets
       {
+        exclude: [
+          /\.(html?)$/,
+          /\.(ts|tsx|js|jsx)$/,
+          /\.css$/,
+          /\.json$/,
+        ],
         loader: "file-loader",
         query: {
           name: "[hash].[ext]",
-          outputPath: "assets/",
+          outputPath: "media/",
           publicPath: "build/",
         },
-        test: /\.(jpg|png|svg|gif)$/,
       },
     ],
-  },
+  } as webpack.NewModule,
   output: {
     filename: "[name].js",
     path: path.join(__dirname, "dist/build"),
